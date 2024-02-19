@@ -15,8 +15,10 @@ type
     btnCriarThreadClasse: TButton;
     lblQtdThreads: TLabel;
     btnCriarThreadAnonima: TButton;
+    btnComprimirArquivo: TButton;
     procedure btnCriarThreadClasseClick(Sender: TObject);
     procedure btnCriarThreadAnonimaClick(Sender: TObject);
+    procedure btnComprimirArquivoClick(Sender: TObject);
   private
     procedure SimularContagemThread;
   public
@@ -28,7 +30,20 @@ var
 
 implementation
 
+uses
+  Threads.Forms.Compactar;
+
 {$R *.dfm}
+
+procedure TfrmPrincipal.btnComprimirArquivoClick(Sender: TObject);
+begin
+  if not Assigned(frmCompactador) then
+  begin
+    frmCompactador := TfrmCompactador.Create(Self);
+  end;
+
+  frmCompactador.Show;
+end;
 
 procedure TfrmPrincipal.btnCriarThreadAnonimaClick(Sender: TObject);
 var

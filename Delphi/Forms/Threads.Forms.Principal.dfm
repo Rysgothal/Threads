@@ -2,7 +2,7 @@ object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
   Caption = 'Threads'
-  ClientHeight = 317
+  ClientHeight = 345
   ClientWidth = 220
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -60,5 +60,14 @@ object frmPrincipal: TfrmPrincipal
     Caption = 'Criar Anonima'
     TabOrder = 3
     OnClick = btnCriarThreadAnonimaClick
+  end
+  object btnComprimirArquivo: TButton
+    Left = 34
+    Top = 305
+    Width = 153
+    Height = 34
+    Caption = 'Comprimir Arquivos'
+    TabOrder = 4
+    OnClick = btnComprimirArquivoClick
   end
 end
