@@ -1,2 +1,5 @@
 *.res
 *.local
+Delphi/Win32/
+*.identcache
+__history
