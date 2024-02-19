@@ -11,11 +11,10 @@ object frmPrincipal: TfrmPrincipal
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poScreenCenter
-  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 15
   object pnlInformacoes: TPanel
-    Left = 8
+    Left = 9
     Top = 8
     Width = 201
     Height = 49
@@ -37,20 +36,29 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object lbxThreads: TListBox
-    Left = 8
+    Left = 9
     Top = 104
     Width = 201
     Height = 193
     ItemHeight = 15
     TabOrder = 1
   end
-  object btnCriarThread: TButton
-    Left = 72
+  object btnCriarThreadClasse: TButton
+    Left = 15
     Top = 63
-    Width = 67
+    Width = 89
     Height = 31
-    Caption = 'Criar'
+    Caption = 'Criar Classe'
     TabOrder = 2
-    OnClick = btnCriarThreadClick
+    OnClick = btnCriarThreadClasseClick
+  end
+  object btnCriarThreadAnonima: TButton
+    Left = 110
+    Top = 63
+    Width = 89
+    Height = 31
+    Caption = 'Criar Anonima'
+    TabOrder = 3
+    OnClick = btnCriarThreadAnonimaClick
   end
 end

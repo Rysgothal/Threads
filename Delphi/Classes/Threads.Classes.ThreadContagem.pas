@@ -28,7 +28,7 @@ begin
   FreeOnTerminate := True;    // Liberar ao finalizar
 
   FIndex := frmPrincipal.lbxThreads.Items.Count + 1;
-  frmPrincipal.lbxThreads.Items.Add('Thread ' + FIndex.ToString + ': 0');
+  frmPrincipal.lbxThreads.Items.Add('Thread: 0');
   frmPrincipal.lblQtdThreads.Caption := (StrToIntDef(frmPrincipal.lblQtdThreads.Caption, 0) + 1).ToString;
 //  Priority := tpHigher;
 end;
@@ -40,10 +40,10 @@ begin
   for var I := 0 to 25 do
   begin
     Sleep(500);
-    frmPrincipal.lbxThreads.Items[FIndex - 1] := 'Thread ' + FIndex.ToString + ': ' + I.ToString;
+    frmPrincipal.lbxThreads.Items[FIndex - 1] := 'Thread: ' + I.ToString;
   end;
 
-  frmPrincipal.lbxThreads.Items[FIndex - 1] := 'Thread ' + FIndex.ToString + ': Terminada';
+  frmPrincipal.lbxThreads.Items[FIndex - 1] := 'Thread: Terminada';
   frmPrincipal.lblQtdThreads.Caption := Pred(StrToInt(frmPrincipal.lblQtdThreads.Caption)).ToString;
 end;
 
