@@ -18,7 +18,7 @@ type
     procedure btnCriarThreadClasseClick(Sender: TObject);
     procedure btnCriarThreadAnonimaClick(Sender: TObject);
   private
-    procedure ContagemThread;
+    procedure SimularContagemThread;
   public
     { Public declarations }
   end;
@@ -34,7 +34,7 @@ procedure TfrmPrincipal.btnCriarThreadAnonimaClick(Sender: TObject);
 var
   lThread: TThread;
 begin
-  lThread := TThread.CreateAnonymousThread(ContagemThread);
+  lThread := TThread.CreateAnonymousThread(SimularContagemThread);
   lThread.Start;
 end;
 
@@ -46,7 +46,7 @@ begin
   lThread.Start;
 end;
 
-procedure TfrmPrincipal.ContagemThread;
+procedure TfrmPrincipal.SimularContagemThread;
 var
   lIndex: Integer;
 begin
