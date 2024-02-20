@@ -59,15 +59,18 @@ begin
   lCompactador := TZipFile.Create;
 
   try
+    frmBarrasProgresso.lblNomePastaCompactada.Caption := FCaminhoAlvo + '.zip';
     AtualizarTamanho;
     lCompactador.OnProgress := AtualizarProgressoCompactacao;
     lCompactador.Open(FCaminhoAlvo + '.zip', zmWrite);
 
     for var lArquivo in FArquivos do
     begin
+      frmBarrasProgresso.lblArquivoCompactado.Caption := lArquivo;
       lCompactador.Add(lArquivo);
       FTamanhoProcessado := FTamanhoProcessado + lCompactador.FileInfo[Pred(lCompactador.FileCount)].UncompressedSize;
     end;
+
   finally
     FreeAndNil(lCompactador);
   end;

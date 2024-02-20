@@ -3,179 +3,110 @@ object frmCompactador: TfrmCompactador
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'Compactador de Arquivos'
-  ClientHeight = 343
-  ClientWidth = 707
+  ClientHeight = 321
+  ClientWidth = 476
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  Position = poScreenCenter
+  Position = poMainFormCenter
   PixelsPerInch = 96
   TextHeight = 15
-  object pctPrincipal: TPageControl
+  object lblArquivosSelecionados: TLabel
+    Left = 16
+    Top = 6
+    Width = 122
+    Height = 15
+    Caption = 'Arquivos Selecionados:'
+  end
+  object pnlPrimcipal: TPanel
     Left = 0
-    Top = 0
-    Width = 707
-    Height = 343
-    ActivePage = pgeCompactar
-    Align = alClient
+    Top = 218
+    Width = 476
+    Height = 103
+    Align = alBottom
     TabOrder = 0
-    object pgeCompactar: TTabSheet
-      Caption = 'Compactar'
-      object lblArquivosSelecionados: TLabel
-        Left = 16
-        Top = 14
-        Width = 122
-        Height = 15
-        Caption = 'Arquivos Selecionados:'
-      end
-      object btnArquivos: TButton
-        Left = 503
-        Top = 215
-        Width = 178
-        Height = 35
-        Caption = '&Selecionar Arquivos'
-        TabOrder = 0
-        OnClick = btnArquivosClick
-      end
-      object lbxArquivosSelecionados: TListBox
-        Left = 16
-        Top = 35
-        Width = 665
-        Height = 161
-        ItemHeight = 15
-        Items.Strings = (
-          'D:\Est'#225'gio\Lucas Souza\Bancos\Ganso_BaseGTIN_ValidaSEFAZ_AM.IB'
-          'D:\Est'#225'gio\Lucas Souza\Bancos\Ganso_BaseGTIN_ValidaSEFAZ_GO.IB'
-          'D:\Est'#225'gio\Lucas Souza\Bancos\Ganso_BaseGTIN_ValidaSEFAZ_MG.IB'
-          'D:\Est'#225'gio\Lucas Souza\Bancos\Ganso_BaseGTIN_ValidaSEFAZ_MS.IB'
-          'D:\Est'#225'gio\Lucas Souza\Bancos\Ganso_BaseGTIN_ValidaSEFAZ_MT.IB')
-        TabOrder = 1
-      end
-      object btnCompactar: TButton
-        Left = 503
-        Top = 262
-        Width = 178
-        Height = 35
-        Caption = 'Compactar'
-        TabOrder = 2
-        OnClick = btnCompactarClick
-      end
-      object lbeNomePastaParaCompactar: TLabeledEdit
-        Left = 16
-        Top = 221
-        Width = 474
-        Height = 23
-        EditLabel.Width = 154
-        EditLabel.Height = 15
-        EditLabel.Caption = 'Nome da Pasta Compactada:'
-        TabOrder = 3
-        Text = 'ADASDsa'
-        TextHint = 'Pasta-Compactada'
-      end
-      object btnLimparLista: TButton
-        Left = 612
-        Top = 3
-        Width = 69
-        Height = 26
-        Caption = 'Limpar'
-        ImageIndex = 2
-        Images = imgIcons
-        TabOrder = 4
-        OnClick = btnLimparListaClick
-      end
-      object lbeLocalPastaOndeSalvar: TLabeledEdit
-        Left = 16
-        Top = 268
-        Width = 393
-        Height = 23
-        EditLabel.Width = 78
-        EditLabel.Height = 15
-        EditLabel.Caption = 'Local da Pasta:'
-        ReadOnly = True
-        TabOrder = 5
-        Text = 'C:\Users\Lucas Frade\Desktop\'
-      end
-      object btnEscolherLocal: TButton
-        Left = 415
-        Top = 262
-        Width = 75
-        Height = 35
-        Caption = 'Local'
-        ImageIndex = 4
-        ImageMargins.Left = 10
-        ImageMargins.Right = -10
-        Images = imgIcons
-        TabOrder = 6
-        OnClick = btnEscolherLocalClick
-      end
+    ExplicitTop = 219
+    object btnArquivos: TButton
+      Left = 336
+      Top = 14
+      Width = 129
+      Height = 35
+      Caption = '&Selecionar Arquivos'
+      TabOrder = 0
+      OnClick = btnArquivosClick
     end
-    object pgeDescompactar: TTabSheet
-      Caption = 'Descompactar'
-      ImageIndex = 1
-      object lbeArquivoComprimidoSelecionado: TLabeledEdit
-        Left = 11
-        Top = 32
-        Width = 670
-        Height = 23
-        EditLabel.Width = 112
-        EditLabel.Height = 15
-        EditLabel.Caption = 'Arquivo Selecionado:'
-        TabOrder = 0
-        Text = ''
-      end
-      object btnDescompactar: TButton
-        Left = 576
-        Top = 104
-        Width = 105
-        Height = 35
-        Caption = '&Descompactar'
-        TabOrder = 1
-        OnClick = btnDescompactarClick
-      end
-      object lbxArquivosDescompactados: TListBox
-        Left = 11
-        Top = 154
-        Width = 670
-        Height = 143
-        ItemHeight = 15
-        TabOrder = 2
-      end
-      object btnSelecionarPasta: TButton
-        Left = 443
-        Top = 104
-        Width = 127
-        Height = 35
-        Caption = '&Selecionar Pasta'
-        TabOrder = 3
-        OnClick = btnSelecionarPastaClick
-      end
-      object lbeLocalDescompactar: TLabeledEdit
-        Left = 11
-        Top = 75
-        Width = 670
-        Height = 23
-        EditLabel.Width = 151
-        EditLabel.Height = 15
-        EditLabel.Caption = 'Local para Descompacta'#231#227'o:'
-        TabOrder = 4
-        Text = ''
-      end
+    object btnCompactar: TButton
+      Left = 336
+      Top = 55
+      Width = 129
+      Height = 35
+      Caption = 'Compactar'
+      TabOrder = 1
+      OnClick = btnCompactarClick
+    end
+    object lbeLocalPastaOndeSalvar: TLabeledEdit
+      Left = 16
+      Top = 23
+      Width = 297
+      Height = 23
+      EditLabel.Width = 78
+      EditLabel.Height = 15
+      EditLabel.Caption = 'Local da Pasta:'
+      ReadOnly = True
+      TabOrder = 3
+      Text = ''
+    end
+    object lbeNomePastaParaCompactar: TLabeledEdit
+      Left = 16
+      Top = 69
+      Width = 297
+      Height = 23
+      EditLabel.Width = 154
+      EditLabel.Height = 15
+      EditLabel.Caption = 'Nome da Pasta Compactada:'
+      TabOrder = 4
+      Text = ''
+      TextHint = 'Pasta-Compactada'
+    end
+    object btnEscolherLocal: TButton
+      Left = 288
+      Top = 23
+      Width = 25
+      Height = 23
+      ImageIndex = 4
+      ImageMargins.Left = 2
+      Images = imgIcons
+      TabOrder = 2
+      OnClick = btnEscolherLocalClick
     end
   end
-  object opdSelecionarArquivos: TOpenDialog
-    InitialDir = 'C:\Users\Lucas Frade'
-    Options = [ofHideReadOnly, ofAllowMultiSelect, ofEnableSizing]
-    Left = 284
-    Top = 138
+  object lbxArquivosSelecionados: TListBox
+    Left = 16
+    Top = 29
+    Width = 444
+    Height = 161
+    ItemHeight = 15
+    TabOrder = 1
+  end
+  object btnLimparLista: TButton
+    Left = 375
+    Top = 190
+    Width = 85
+    Height = 26
+    Caption = 'Limpar'
+    ImageIndex = 2
+    Images = imgIcons
+    TabOrder = 2
+    OnClick = btnLimparListaClick
   end
   object imgIcons: TImageList
     BlendColor = clBtnFace
     BkColor = 15790320
-    Left = 56
-    Top = 169
+    Left = 336
+    Top = 137
     Bitmap = {
       494C01011B002800040010001000F0F0F000FF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000007000000001002000000000000070
@@ -1108,10 +1039,16 @@ object frmCompactador: TfrmCompactador
       FFFFFFEFFC3FC007FFFFFFFFFFFFFFFF00000000000000000000000000000000
       000000000000}
   end
+  object opdSelecionarArquivos: TOpenDialog
+    InitialDir = 'C:\Users\Lucas Frade'
+    Options = [ofHideReadOnly, ofAllowMultiSelect, ofEnableSizing]
+    Left = 220
+    Top = 138
+  end
   object svdSalvarCaminho: TSaveDialog
     Filter = 'Arquivo Comprimido(*.zip)|*.zip'
     InitialDir = 'C:\Users\Lucas Frade'
-    Left = 404
-    Top = 146
+    Left = 92
+    Top = 138
   end
 end

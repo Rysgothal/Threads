@@ -10,30 +10,21 @@ uses
 
 type
   TfrmCompactador = class(TForm)
-    pctPrincipal: TPageControl;
-    pgeCompactar: TTabSheet;
-    pgeDescompactar: TTabSheet;
-    opdSelecionarArquivos: TOpenDialog;
+    pnlPrimcipal: TPanel;
     btnArquivos: TButton;
+    btnCompactar: TButton;
+    btnEscolherLocal: TButton;
+    imgIcons: TImageList;
+    lbeLocalPastaOndeSalvar: TLabeledEdit;
+    lbeNomePastaParaCompactar: TLabeledEdit;
+    opdSelecionarArquivos: TOpenDialog;
+    svdSalvarCaminho: TSaveDialog;
     lbxArquivosSelecionados: TListBox;
     lblArquivosSelecionados: TLabel;
-    btnCompactar: TButton;
-    lbeNomePastaParaCompactar: TLabeledEdit;
     btnLimparLista: TButton;
-    lbeArquivoComprimidoSelecionado: TLabeledEdit;
-    btnDescompactar: TButton;
-    lbxArquivosDescompactados: TListBox;
-    btnSelecionarPasta: TButton;
-    imgIcons: TImageList;
-    svdSalvarCaminho: TSaveDialog;
-    lbeLocalPastaOndeSalvar: TLabeledEdit;
-    lbeLocalDescompactar: TLabeledEdit;
-    btnEscolherLocal: TButton;
     procedure btnArquivosClick(Sender: TObject);
     procedure btnCompactarClick(Sender: TObject);
     procedure btnLimparListaClick(Sender: TObject);
-    procedure btnDescompactarClick(Sender: TObject);
-    procedure btnSelecionarPastaClick(Sender: TObject);
     procedure btnEscolherLocalClick(Sender: TObject);
   private
     procedure CompactarArquivos;
@@ -42,9 +33,6 @@ type
     procedure AdicionarArquivosListBox;
     procedure DefinirUltimoDiretorioUsado;
     procedure LimparPaginaCompactar;
-    procedure SelecionarArquivoCompactado;
-    procedure DescompactarArquivo;
-    procedure MostrarArquivosDescomprimidosListBox;
     { Private declarations }
   public
     { Public declarations }
@@ -75,11 +63,6 @@ begin
   CompactarArquivos;
 end;
 
-procedure TfrmCompactador.btnDescompactarClick(Sender: TObject);
-begin
-  DescompactarArquivo;
-end;
-
 procedure TfrmCompactador.btnEscolherLocalClick(Sender: TObject);
 begin
   EscolherOndeSalvar;
@@ -90,15 +73,9 @@ begin
   LimparPaginaCompactar;
 end;
 
-procedure TfrmCompactador.btnSelecionarPastaClick(Sender: TObject);
-begin
-  SelecionarArquivoCompactado;
-end;
-
 procedure TfrmCompactador.CompactarArquivos;
 var
   lNomePasta, lLocalFuturo: string;
-//  frmBarrasProgresso: TfrmBarrasProgresso;
 begin
   lNomePasta := lbeNomePastaParaCompactar.Text;
   lLocalFuturo := lbeLocalPastaOndeSalvar.Text;
@@ -111,7 +88,11 @@ begin
     Exit;
   end;
 
-  frmBarrasProgresso := TfrmBarrasProgresso.Create(lbxArquivosSelecionados.Items, lNomePasta, lLocalFuturo);
+  if not Assigned(frmBarrasProgresso) then
+  begin
+    frmBarrasProgresso := TfrmBarrasProgresso.Create(lLocalFuturo + lNomePasta);
+  end;
+
   frmBarrasProgresso.Show(lbxArquivosSelecionados.Items);
 end;
 
@@ -126,22 +107,6 @@ begin
 
   lDiretorio := lbxArquivosSelecionados.Items[lbxArquivosSelecionados.Items.Count -1];
   opdSelecionarArquivos.InitialDir := lDiretorio;
-end;
-
-procedure TfrmCompactador.DescompactarArquivo;
-begin
-  if lbeArquivoComprimidoSelecionado.Text = EmptyStr then
-  begin
-    Exit;
-  end;
-
-//  if not Assigned(frmBarrasProgresso) then
-//  begin
-//    frmBarrasProgresso := TfrmBarrasProgresso.Create(lbeArquivoComprimidoSelecionado.Text, lbeLocalDescompactar.Text);
-//    frmBarrasProgresso.Show;
-//  end;
-
-  MostrarArquivosDescomprimidosListBox;
 end;
 
 procedure TfrmCompactador.EscolherOndeSalvar;
@@ -173,60 +138,6 @@ procedure TfrmCompactador.LimparPaginaCompactar;
 begin
   lbxArquivosSelecionados.Clear;
   lbeNomePastaParaCompactar.Clear;
-end;
-
-procedure TfrmCompactador.MostrarArquivosDescomprimidosListBox;
-var
-  lDiretorio: string;
-  lSRC: TSearchRec;
-  I: Integer;
-begin
-  lDiretorio := lbeArquivoComprimidoSelecionado.Text;
-  lDiretorio := StringReplace(lDiretorio, '.zip', '', [rfReplaceAll]);
-  lbxArquivosDescompactados.Clear;
-
-  if not System.SysUtils.DirectoryExists(lDiretorio) then
-  begin
-    Exit;
-  end;
-
-  I := FindFirst(lDiretorio + '\*', faAnyFile, lSRC);
-  while I = 0 do
-  begin
-    if not (lSRC.Name = '.') then
-    begin
-      lbxArquivosDescompactados.Items.Add(lSRC.Name);
-    end;
-
-    I := FindNext(lSRC);
-  end;
-
-  lbxArquivosDescompactados.Items.Delete(0);
-end;
-
-procedure TfrmCompactador.SelecionarArquivoCompactado;
-begin
-  try
-    if not opdSelecionarArquivos.Execute then
-    begin
-      Exit;
-    end;
-
-    if ExtractFileExt(opdSelecionarArquivos.FileName) <> '.zip' then
-    begin
-      Application.MessageBox('Por favor, selecione um arquivo que esteja compactado', 'Arquivo selecionado não ' +
-        'compactado', MB_OK + MB_ICONINFORMATION);
-      Exit;
-    end;
-
-    lbeArquivoComprimidoSelecionado.Text := opdSelecionarArquivos.FileName;
-  except
-    on E: Exception do
-    begin
-      Application.MessageBox('Houve uma Falha e não foi possivel selecionaro arquivo', 'Falha Desconhecida',
-        MB_OK + MB_ICONINFORMATION);
-    end;
-  end;
 end;
 
 procedure TfrmCompactador.SelecionarArquivos;

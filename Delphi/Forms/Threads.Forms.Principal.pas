@@ -42,7 +42,7 @@ begin
     frmCompactador := TfrmCompactador.Create(Self);
   end;
 
-  frmCompactador.Show;
+  frmCompactador.ShowModal;
 end;
 
 procedure TfrmPrincipal.btnCriarThreadAnonimaClick(Sender: TObject);
