@@ -35,7 +35,7 @@ var
   lPorcentagemArquivo, lPorcentagemGeral: Real;
 begin
   lPorcentagemArquivo := pPosition / pHeader.UncompressedSize * 100;
-  lPorcentagemGeral := (FTamanhoProcessado + pPosition) / (FTamanhoTotal) * 100;
+  lPorcentagemGeral := (FTamanhoProcessado + pPosition) / FTamanhoTotal * 100;
 
   frmBarrasProgresso.pgbArquivo.Position := Trunc(lPorcentagemArquivo);
   frmBarrasProgresso.pgbTotal.Position := Trunc(lPorcentagemGeral);
