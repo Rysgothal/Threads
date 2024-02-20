@@ -32,7 +32,7 @@ type
     procedure SelecionarArquivos;
     procedure AdicionarArquivosListBox;
     procedure DefinirUltimoDiretorioUsado;
-    procedure LimparPaginaCompactar;
+    procedure Limpar;
     { Private declarations }
   public
     { Public declarations }
@@ -70,7 +70,7 @@ end;
 
 procedure TfrmCompactador.btnLimparListaClick(Sender: TObject);
 begin
-  LimparPaginaCompactar;
+  Limpar;
 end;
 
 procedure TfrmCompactador.CompactarArquivos;
@@ -134,7 +134,7 @@ begin
   end;
 end;
 
-procedure TfrmCompactador.LimparPaginaCompactar;
+procedure TfrmCompactador.Limpar;
 begin
   lbxArquivosSelecionados.Clear;
   lbeNomePastaParaCompactar.Clear;
@@ -155,7 +155,7 @@ begin
     on E: Exception do
     begin
       Application.MessageBox('Falha inesperada, verifique', 'Falha Desconhecida');
-      LimparPaginaCompactar;
+      Limpar;
     end;
   end;
 end;

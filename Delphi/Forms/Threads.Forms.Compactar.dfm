@@ -28,7 +28,6 @@ object frmCompactador: TfrmCompactador
     Height = 103
     Align = alBottom
     TabOrder = 0
-    ExplicitTop = 219
     object btnArquivos: TButton
       Left = 336
       Top = 14
