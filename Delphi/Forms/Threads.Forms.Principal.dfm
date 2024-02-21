@@ -2,7 +2,7 @@ object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
   Caption = 'Threads'
-  ClientHeight = 345
+  ClientHeight = 385
   ClientWidth = 220
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -69,5 +69,14 @@ object frmPrincipal: TfrmPrincipal
     Caption = 'Comprimir Arquivos'
     TabOrder = 4
     OnClick = btnComprimirArquivoClick
+  end
+  object btnSemafaro: TButton
+    Left = 34
+    Top = 345
+    Width = 153
+    Height = 34
+    Caption = 'Sem'#225'foro'
+    TabOrder = 5
+    OnClick = btnSemafaroClick
   end
 end
