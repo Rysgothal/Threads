@@ -2,6 +2,7 @@ object frmCompactador: TfrmCompactador
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
   Caption = 'Compactador de Arquivos'
   ClientHeight = 321
   ClientWidth = 476

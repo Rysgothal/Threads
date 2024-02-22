@@ -9,7 +9,9 @@ uses
   Threads.Forms.BarraProgresso in 'Forms\Threads.Forms.BarraProgresso.pas' {frmBarrasProgresso},
   Threads.Forms.Semaforo in 'Forms\Threads.Forms.Semaforo.pas' {frmSemaforo},
   Threads.Classes.ThreadSemaforo in 'Classes\Threads.Classes.ThreadSemaforo.pas',
-  Threads.Helpers.TiposAuxiliares in 'Helpers\Threads.Helpers.TiposAuxiliares.pas';
+  Threads.Helpers.TiposAuxiliares in 'Helpers\Threads.Helpers.TiposAuxiliares.pas',
+  Threads.Forms.AntiVirus in 'Forms\Threads.Forms.AntiVirus.pas' {frmAntivirus},
+  Threads.Classes.ThreadAntivirus in 'Classes\Threads.Classes.ThreadAntivirus.pas';
 
 {$R *.res}
 
@@ -18,5 +20,6 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TfrmAntivirus, frmAntivirus);
   Application.Run;
 end.
