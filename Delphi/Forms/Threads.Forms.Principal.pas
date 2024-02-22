@@ -16,9 +16,12 @@ type
     lblQtdThreads: TLabel;
     btnCriarThreadAnonima: TButton;
     btnComprimirArquivo: TButton;
+    btnSemafaro: TButton;
     procedure btnCriarThreadClasseClick(Sender: TObject);
     procedure btnCriarThreadAnonimaClick(Sender: TObject);
     procedure btnComprimirArquivoClick(Sender: TObject);
+    procedure btnSemafaroClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     procedure SimularContagemThread;
   public
@@ -31,7 +34,7 @@ var
 implementation
 
 uses
-  Threads.Forms.Compactar;
+  Threads.Forms.Compactar, Threads.Forms.Semaforo, Threads.Forms.Teste;
 
 {$R *.dfm}
 
@@ -61,13 +64,29 @@ begin
   lThread.Start;
 end;
 
+procedure TfrmPrincipal.btnSemafaroClick(Sender: TObject);
+begin
+  if not Assigned(frmSemaforo) then
+  begin
+    frmSemaforo:= TfrmSemaforo.Create(Self);
+  end;
+
+  frmSemaforo.Show;
+end;
+
+procedure TfrmPrincipal.Button1Click(Sender: TObject);
+begin
+  MainForm := TForm1.Create(Self);
+  MainForm.Show;
+end;
+
 procedure TfrmPrincipal.SimularContagemThread;
 var
   lIndex: Integer;
 begin
   lIndex := lbxThreads.Items.Count + 1;
   lbxThreads.Items.Add('Thread Anônima: 0');
-  lblQtdThreads.Caption := (StrToIntDef(lblQtdThreads.Caption, 0) + 1).ToString;
+  lblQtdThreads.Caption := Succ(StrToIntDef(lblQtdThreads.Caption, 0)).ToString;
 
   for var I := 0 to 25 do
   begin
