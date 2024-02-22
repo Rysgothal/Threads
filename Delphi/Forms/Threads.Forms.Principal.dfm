@@ -2,7 +2,7 @@ object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
   Caption = 'Threads'
-  ClientHeight = 385
+  ClientHeight = 389
   ClientWidth = 220
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET

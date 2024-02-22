@@ -21,6 +21,7 @@ type
     procedure btnCriarThreadAnonimaClick(Sender: TObject);
     procedure btnComprimirArquivoClick(Sender: TObject);
     procedure btnSemafaroClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     procedure SimularContagemThread;
   public
@@ -33,7 +34,7 @@ var
 implementation
 
 uses
-  Threads.Forms.Compactar, Threads.Forms.Semaforo;
+  Threads.Forms.Compactar, Threads.Forms.Semaforo, Threads.Forms.Teste;
 
 {$R *.dfm}
 
@@ -65,14 +66,18 @@ end;
 
 procedure TfrmPrincipal.btnSemafaroClick(Sender: TObject);
 begin
-  if not Assigned(frmSemaforoViaHorizontal) and not Assigned(frmSemaforoViaVertical) then
+  if not Assigned(frmSemaforo) then
   begin
-    frmSemaforoViaHorizontal := TfrmSemaforo.Create(Self);
-    frmSemaforoViaVertical := TfrmSemaforo.Create(Self);
+    frmSemaforo:= TfrmSemaforo.Create(Self);
   end;
 
-  frmSemaforoViaHorizontal.Show;
-  frmSemaforoViaVertical.Show;
+  frmSemaforo.Show;
+end;
+
+procedure TfrmPrincipal.Button1Click(Sender: TObject);
+begin
+  MainForm := TForm1.Create(Self);
+  MainForm.Show;
 end;
 
 procedure TfrmPrincipal.SimularContagemThread;

@@ -3,45 +3,81 @@ object frmSemaforo: TfrmSemaforo
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = 'frmSemaforo'
-  ClientHeight = 168
-  ClientWidth = 50
+  Caption = 'Sem'#225'foro'
+  ClientHeight = 183
+  ClientWidth = 196
   Color = clBtnFace
-  Constraints.MaxHeight = 207
-  Constraints.MaxWidth = 66
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  Position = poDesigned
+  Position = poMainFormCenter
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 15
-  object shpVermelho: TShape
-    Left = -1
-    Top = 9
+  object pnlViaHorizontal: TPanel
+    Left = 37
+    Top = 24
     Width = 49
-    Height = 38
-    Brush.Color = clRed
-    Shape = stCircle
+    Height = 145
+    TabOrder = 0
+    object shpVermelhoHorizontal: TShape
+      Left = 0
+      Top = 11
+      Width = 49
+      Height = 38
+      Brush.Color = clRed
+      Shape = stCircle
+    end
+    object shpAmareloHorizontal: TShape
+      Left = 0
+      Top = 55
+      Width = 49
+      Height = 38
+      Brush.Color = clYellow
+      Shape = stCircle
+    end
+    object shpVerdeHorizontal: TShape
+      Left = 0
+      Top = 99
+      Width = 49
+      Height = 38
+      Brush.Color = clLime
+      Shape = stCircle
+    end
   end
-  object shpAmarelo: TShape
-    Left = -1
-    Top = 65
+  object pnlViaVertical: TPanel
+    Left = 125
+    Top = 24
     Width = 49
-    Height = 38
-    Brush.Color = clYellow
-    Shape = stCircle
-  end
-  object shpVerde: TShape
-    Left = -1
-    Top = 121
-    Width = 49
-    Height = 38
-    Brush.Color = clLime
-    Shape = stCircle
+    Height = 145
+    TabOrder = 1
+    object shpVermelhoVertical: TShape
+      Left = 0
+      Top = 11
+      Width = 49
+      Height = 38
+      Brush.Color = clRed
+      Shape = stCircle
+    end
+    object shpAmareloVertical: TShape
+      Left = 0
+      Top = 55
+      Width = 49
+      Height = 38
+      Brush.Color = clYellow
+      Shape = stCircle
+    end
+    object shpVerdeVertical: TShape
+      Left = 0
+      Top = 99
+      Width = 49
+      Height = 38
+      Brush.Color = clLime
+      Shape = stCircle
+    end
   end
 end
